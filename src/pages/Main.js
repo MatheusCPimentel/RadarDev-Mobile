@@ -5,11 +5,12 @@ import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location'
 
 function Main() {
     const [currentRegion, setCurrentRegion] = useState(null);
+
     useEffect (() => {
         async function loadInitialPosition(){
             const { granted } = await requestPermissionsAsync();
 
-            if (granted) {
+            if (granted) {  
                 const { coords } = await getCurrentPositionAsync({
                     enableHighAccuracy: true,
                 });
@@ -32,7 +33,7 @@ function Main() {
         return null;
     }
 
-    return <MapView initial Region={currentRegion} style={styles.map}/>
+    return <MapView initialRegion={currentRegion} style={styles.map}/>
 }
 
 const styles = StyleSheet.create({
