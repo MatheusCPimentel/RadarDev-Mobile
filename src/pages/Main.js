@@ -9,6 +9,8 @@ import api from '../services/api';
 function Main({ navigation }) {
     const [devs, setDevs] = useState([]);
     const [currentRegion, setCurrentRegion] = useState(null);
+    const [techs, setTechs] = useState('');
+
 
     useEffect (() => {
         async function loadInitialPosition(){
@@ -40,7 +42,7 @@ function Main({ navigation }) {
         params: {
             latitude,
             longitude,
-            techs: 'React'
+            techs
           }
         });
 
@@ -90,10 +92,12 @@ function Main({ navigation }) {
         <View style={styles.searchForm}>
             <TextInput 
                 style={styles.searchInput} 
-                placeHolder="Buscar devs por techs..."
+                placeholder="Buscar devs por techs..."
                 placeholderTextColor="#999"
                 autoCapitalize="words"
                 autoCorrect={false}
+                vale={techs}
+                onChangeText={setTechs}
             />
 
             <TouchableOpacity onPress={loadDevs} style={styles.loadButton}>
