@@ -40,11 +40,9 @@ function Main({ navigation }) {
         params: {
             latitude,
             longitude,
-            techs: 'JavaScript'
+            techs: 'React'
           }
         });
-
-        console.log(response.data.devs);
 
         setDevs(response.data.devs);
     }
